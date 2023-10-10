@@ -5,7 +5,7 @@ using System.ComponentModel.Design;
 
 namespace BraiseEngineTemplate.Components
 {
-    public class KineticBody : Component
+    public class CharacterController : Component
     {
         //A Variable that returns the Collider of the parent GameObject
         Collider collider
@@ -14,7 +14,7 @@ namespace BraiseEngineTemplate.Components
         }
 
         public Vector2 velocity { get; set; }
-        public KineticBody(GameObject parent) : base(parent)
+        public CharacterController(GameObject parent) : base(parent)
         {
             this.parent = parent;
         }
