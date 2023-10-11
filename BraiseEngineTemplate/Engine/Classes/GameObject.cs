@@ -20,7 +20,7 @@ namespace BraiseEngineTemplate
 		private List<Component> components = new List<Component>();
 		public Transform transform;
 
-		public bool Active { get; set; }
+		public bool Active = true;
 
 		//Every way of creating a GameObject (+Initialization which is in it's own function to not duplicate knowledge)
 		public GameObject() 

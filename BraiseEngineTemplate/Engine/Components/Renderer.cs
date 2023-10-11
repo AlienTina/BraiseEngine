@@ -8,6 +8,11 @@ namespace BraiseEngineTemplate.Components
 		public Texture2D sprite { get; set; }
 		public Color color = Color.White;
 		public Vector2 origin = Vector2.Zero;
+		public Renderer(GameObject parent) : base(parent)
+		{
+			this.sprite = Core.Instance.Content.Load<Texture2D>("Engine/undefined");
+			this.parent = parent;
+		}
 		public Renderer(GameObject parent, Texture2D sprite) : base(parent)
 		{
 			this.sprite = sprite;

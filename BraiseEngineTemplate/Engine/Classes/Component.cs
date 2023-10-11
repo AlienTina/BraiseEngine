@@ -15,7 +15,7 @@ namespace BraiseEngineTemplate
 	{
 		public GameObject parent { get; set; }
 
-		public bool Active { get; set; }
+		public bool Active = true;
 		public Component(GameObject parent) 
 		{
 			this.parent = parent;

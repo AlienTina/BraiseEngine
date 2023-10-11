@@ -1,5 +1,6 @@
 ﻿using BraiseEngineTemplate.Components;
 using BraiseEngineTemplate.Components.Colliders;
+using BraiseEngineTemplate.Engine.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -32,7 +33,7 @@ namespace BraiseEngineTemplate
 
 		protected override void Draw(GameTime gameTime)
 		{
-			base.Draw(gameTime);
+			base.Draw(gameTime);;
 		}
 	}
 }

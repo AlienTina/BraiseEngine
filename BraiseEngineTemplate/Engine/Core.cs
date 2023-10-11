@@ -14,6 +14,8 @@ namespace BraiseEngineTemplate
 		private static Core instance = null;
 		private static readonly object padlock = new object();
 
+		public SpriteFont DefaultFont;
+
 		public static Core Instance
 		{
 			set { instance = value; }
@@ -59,6 +61,7 @@ namespace BraiseEngineTemplate
 
 			viewport = _graphics.GraphicsDevice.Viewport;
 			screenCentre = new Vector2(viewport.Width / 2, viewport.Height / 2);
+			DefaultFont = Content.Load<SpriteFont>("Engine/DefaultFont");
 		}
 
 		protected override void LoadContent()
