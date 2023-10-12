@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BraiseEngineTemplate.Engine.Components
+namespace BraiseEngineTemplate.Components
 {
 	public class SheetRenderer : Renderer
 	{
