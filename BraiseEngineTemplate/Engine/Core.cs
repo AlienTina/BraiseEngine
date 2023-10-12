@@ -50,9 +50,9 @@ namespace BraiseEngineTemplate
 		public Vector2 cameraWorldPosition = Vector2.Zero;
 		public Vector2 screenCentre;
 
-		public Random rng = new Random();
+		public Random rng = new Random(DateTime.Now.Second);
 
-		protected Color backgroundColor = Color.SkyBlue;
+		public Color backgroundColor = Color.SkyBlue;
 
 		public int ResolutionWidth = 1280;
 		public int ResolutionHeight = 720;
