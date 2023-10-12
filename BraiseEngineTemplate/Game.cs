@@ -26,7 +26,7 @@ namespace BraiseEngineTemplate
 
 		protected override void Draw(GameTime gameTime)
 		{
-			base.Draw(gameTime);;
+			base.Draw(gameTime);
 		}
 	}
 }
