@@ -16,6 +16,12 @@ namespace BraiseEngineTemplate
 
 		public SpriteFont DefaultFont;
 
+		public KeyboardState currentKeyState;
+		public KeyboardState lastKeyState;
+
+		public MouseState currentMouseState;
+		public MouseState lastMouseState;
+
 		public static Core Instance
 		{
 			set { instance = value; }
@@ -36,6 +42,7 @@ namespace BraiseEngineTemplate
 		public SpriteBatch _spriteBatch;
 
 		public Scene currentScene = new Scene();
+		public Scene UI = new Scene();
 
 		private Matrix camera = Matrix.Identity;
 
@@ -72,7 +79,13 @@ namespace BraiseEngineTemplate
 
 		protected override void Update(GameTime gameTime)
 		{
+			lastKeyState = currentKeyState;
+			currentKeyState = Keyboard.GetState();
+
+			lastMouseState = currentMouseState;
+			currentMouseState = Mouse.GetState();
 			currentScene.Update(gameTime);
+			UI.Update(gameTime);
 
 			Vector2 translation = -cameraWorldPosition + screenCentre;
 
@@ -87,6 +100,9 @@ namespace BraiseEngineTemplate
 
 			_spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, camera);
 			currentScene.Draw();
+			_spriteBatch.End();
+			_spriteBatch.Begin(SpriteSortMode.FrontToBack, null, null, null, null, null, Matrix.Identity);
+			UI.Draw();
 			_spriteBatch.End();
 
 			base.Draw(gameTime);

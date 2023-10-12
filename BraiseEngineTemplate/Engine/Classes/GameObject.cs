@@ -17,7 +17,7 @@ namespace BraiseEngineTemplate
 	{
 		public string Name { get; set; }
 		public string Tag { get; set; }
-		private List<Component> components = new List<Component>();
+		protected List<Component> components = new List<Component>();
 		public Transform transform;
 
 		public bool Active = true;
@@ -42,7 +42,7 @@ namespace BraiseEngineTemplate
 			Initialize();
 		}
 
-		private void Initialize()
+		protected virtual void Initialize()
 		{
 			transform = new Transform(this, Vector2.Zero, 0, 1);
 		}
@@ -81,7 +81,7 @@ namespace BraiseEngineTemplate
 			return found;
 		}
 
-		public void Update(GameTime gameTime)
+		public virtual void Update(GameTime gameTime)
 		{
 			if (Active)
 			{
@@ -92,7 +92,7 @@ namespace BraiseEngineTemplate
 			}
 		}
 
-		public void Draw()
+		public virtual void Draw()
 		{
 			if (Active)
 			{
