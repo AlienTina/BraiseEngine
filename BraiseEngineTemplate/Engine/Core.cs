@@ -54,6 +54,9 @@ namespace BraiseEngineTemplate
 
 		protected Color backgroundColor = Color.SkyBlue;
 
+		public int ResolutionWidth = 1280;
+		public int ResolutionHeight = 720;
+
 		public Core()
 		{
 			_graphics = new GraphicsDeviceManager(this);
@@ -84,6 +87,15 @@ namespace BraiseEngineTemplate
 
 			lastMouseState = currentMouseState;
 			currentMouseState = Mouse.GetState();
+
+			if(_graphics.PreferredBackBufferWidth != ResolutionWidth || _graphics.PreferredBackBufferHeight != ResolutionHeight)
+			{
+				_graphics.PreferredBackBufferHeight = ResolutionHeight;
+				_graphics.PreferredBackBufferWidth = ResolutionWidth;
+				screenCentre = new Vector2(ResolutionWidth / 2, ResolutionHeight / 2);
+				_graphics.ApplyChanges();
+			}
+
 			currentScene.Update(gameTime);
 			UI.Update(gameTime);
 

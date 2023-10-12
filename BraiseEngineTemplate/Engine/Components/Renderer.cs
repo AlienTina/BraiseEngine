@@ -29,6 +29,14 @@ namespace BraiseEngineTemplate.Components
 			origin = new Vector2(sprite.Width * point.X, sprite.Height * point.Y);
 		}
 
+		public override void Update(GameTime gameTime)
+		{
+			base.Update(gameTime);
+			Rectangle viewPort = new Rectangle(Core.Instance.cameraWorldPosition.ToPoint() - Core.Instance.screenCentre.ToPoint(), new Point(Core.Instance.ResolutionWidth, Core.Instance.ResolutionHeight));
+			Rectangle spriteRect = new Rectangle(parent.transform.position.ToPoint(), sprite.Bounds.Size);
+			Active = spriteRect.Intersects(viewPort);
+		}
+
 		public override void Draw()
 		{
 			if (Active)
