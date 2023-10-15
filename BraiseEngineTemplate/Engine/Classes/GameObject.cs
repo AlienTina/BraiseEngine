@@ -23,6 +23,10 @@ namespace BraiseEngineTemplate
 
 		public bool Active = true;
 
+		public List<GameObject> children = new List<GameObject>();
+
+		public Transform parent;
+
 		//Every way of creating a GameObject (+Initialization which is in it's own function to not duplicate knowledge)
 		public GameObject() 
 		{
@@ -84,6 +88,17 @@ namespace BraiseEngineTemplate
 
 		public virtual void Update(GameTime gameTime)
 		{
+			if(children.Count > 0)
+			{
+				foreach(GameObject child in children)
+				{
+					child.transform.position = transform.position + child.transform.localPosition;
+				}
+			}
+			if(parent == null)
+			{
+				transform.localPosition = transform.position;
+			}
 			if (Active)
 			{
 				foreach (Component component in components)

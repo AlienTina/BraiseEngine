@@ -33,8 +33,8 @@ namespace BraiseEngineTemplate.Components
 				
 
 				//Move the object based on velocity
-				Vector2 newPosition = parent.transform.position + velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                parent.transform.position = newPosition;
+				Vector2 newPosition = parent.transform.localPosition + velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                parent.transform.localPosition = newPosition;
 
                 foreach (GameObject gameObject in Core.Instance.currentScene.gameObjects)
 				{
@@ -47,7 +47,7 @@ namespace BraiseEngineTemplate.Components
 							//If the two colliders are touching, try correcting the penetration
 							Vector2 penetration = GetPenetration(objectCollider);
 
-							parent.transform.position += penetration;
+							parent.transform.localPosition += penetration;
 
 						}
 					}
