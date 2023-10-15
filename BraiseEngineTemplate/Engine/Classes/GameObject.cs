@@ -92,6 +92,7 @@ namespace BraiseEngineTemplate
 			{
 				foreach(GameObject child in children)
 				{
+					if (child.parent == null) parent = transform;
 					child.transform.position = transform.position + child.transform.localPosition;
 				}
 			}
