@@ -5,19 +5,25 @@ namespace BraiseEngineTemplate.Components.Colliders
 {
 	public class RectangleCollider : Collider
 	{
+		[EditableInEditor]
 		public Rectangle boundingRect;
 		public RectangleCollider(GameObject parent, Rectangle boundingRectangle) : base(parent)
 		{
 			this.parent = parent;
 			this.boundingRect = boundingRectangle;
-			this.Size = new Vector2(boundingRect.Width, boundingRect.Height);
+			this.correctionRect = boundingRect;
 		}
-		
+
+		public RectangleCollider()
+		{
+
+		}
+
 		public override void Update(GameTime gameTime)
 		{
 			//Update the collider's position, and set the position variable to it
 			boundingRect.Location = parent.transform.position.ToPoint();
-			Position = boundingRect.Location.ToVector2();
+			correctionRect = boundingRect;
 		}
 
 		public override bool CheckForCollision(Collider other)

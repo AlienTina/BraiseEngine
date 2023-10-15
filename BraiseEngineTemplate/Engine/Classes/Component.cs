@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-
+using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace BraiseEngineTemplate
 {
@@ -15,10 +16,16 @@ namespace BraiseEngineTemplate
 	{
 		public GameObject parent { get; set; }
 
+		[EditableInEditor]
 		public bool Active = true;
 		public Component(GameObject parent) 
 		{
 			this.parent = parent;
+		}
+
+		public Component()
+		{
+			
 		}
 
 		public virtual void Start()
@@ -31,7 +38,15 @@ namespace BraiseEngineTemplate
 
 		}
 
-		public virtual void Draw()
+		public virtual void Draw(SpriteBatch _spriteBatch)
+		{
+
+		}
+	}
+
+	public class EditableInEditor : Attribute
+	{
+		public EditableInEditor()
 		{
 
 		}

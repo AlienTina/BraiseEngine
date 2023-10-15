@@ -1,20 +1,36 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BraiseEngineTemplate.Components
 {
 	public class AnimatedRenderer : Renderer
 	{
+		[JsonIgnore]
 		List<Texture2D> animation {  get; set; }
+
+		[EditableInEditor]
+		List<string> animationPaths { get; set; }
+		[EditableInEditor]
 		public float framerate = 20;
 		float timeUntilNextFrame = 0;
 		int frame = 0;
-		public AnimatedRenderer(GameObject parent, List<Texture2D> animation) : base(parent) 
+		public AnimatedRenderer(GameObject parent, List<Texture2D> animation, List<string> animationPaths) : base(parent) 
 		{
 			this.parent = parent;
 			this.animation = animation;
 			timeUntilNextFrame = 1 / framerate;
+		}
+
+		[JsonConstructor]
+		public AnimatedRenderer(List<string> animationPaths)
+		{
+			this.animationPaths = animationPaths;
+			foreach(string path in animationPaths)
+			{
+				animation.Add(Core.Instance.Content.Load<Texture2D>(path));
+			}
 		}
 
 		public AnimatedRenderer(GameObject parent, List<string> animationPaths) : base(parent)
@@ -41,7 +57,7 @@ namespace BraiseEngineTemplate.Components
 			}
 		}
 
-		public override void Draw()
+		public override void Draw(SpriteBatch _spriteBatch)
 		{
 			if (Active)
 			{

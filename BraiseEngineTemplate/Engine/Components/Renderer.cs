@@ -1,25 +1,46 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Newtonsoft.Json;
 
 namespace BraiseEngineTemplate.Components
 {
 	public class Renderer : Component
 	{
+		[JsonIgnore]
 		public Texture2D sprite { get; set; }
+
+		[EditableInEditor]
+		public string spritePath = "";
+		[EditableInEditor]
 		public Color color = Color.White;
+		[EditableInEditor]
 		public Vector2 origin = Vector2.Zero;
+
+		[JsonConstructor]
+		public Renderer(string spritePath)
+		{
+			this.spritePath = spritePath;
+			this.sprite = Core.Instance.Content.Load<Texture2D>(spritePath);
+		}
+		public Renderer()
+		{
+
+		}
 		public Renderer(GameObject parent) : base(parent)
 		{
 			this.sprite = Core.Instance.Content.Load<Texture2D>("Engine/undefined");
 			this.parent = parent;
 		}
-		public Renderer(GameObject parent, Texture2D sprite) : base(parent)
+
+		public Renderer(GameObject parent, Texture2D sprite, string spritePath) : base(parent)
 		{
+			this.spritePath = spritePath;
 			this.sprite = sprite;
 			this.parent = parent;
 		}
 		public Renderer(GameObject parent, string spritePath) : base(parent)
 		{
+			this.spritePath = spritePath;
 			this.sprite = Core.Instance.Content.Load<Texture2D>(spritePath);
 			this.parent = parent;
 		}
@@ -37,11 +58,11 @@ namespace BraiseEngineTemplate.Components
 			Active = spriteRect.Intersects(viewPort);
 		}
 
-		public override void Draw()
+		public override void Draw(SpriteBatch _spriteBatch)
 		{
 			if (Active)
 			{
-				Core.Instance._spriteBatch.Draw(sprite, parent.transform.position, null, color, (float)parent.transform.rotation, origin, parent.transform.scale, SpriteEffects.None, 0);
+				_spriteBatch.Draw(sprite, parent.transform.position, null, color, (float)parent.transform.rotation, origin, parent.transform.scale, SpriteEffects.None, 0);
 			}
 		}
 	}

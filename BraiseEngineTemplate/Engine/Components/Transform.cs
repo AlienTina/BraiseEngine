@@ -16,5 +16,9 @@ namespace BraiseEngineTemplate.Components
 
 			this.parent = parent;
 		}
+		public Transform()
+		{
+
+		}
 	}
 }

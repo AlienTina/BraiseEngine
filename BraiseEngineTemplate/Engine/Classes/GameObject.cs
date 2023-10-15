@@ -1,5 +1,6 @@
 ﻿using BraiseEngineTemplate.Components;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,7 +18,7 @@ namespace BraiseEngineTemplate
 	{
 		public string Name { get; set; }
 		public string Tag { get; set; }
-		protected List<Component> components = new List<Component>();
+		public List<Component> components = new List<Component>();
 		public Transform transform;
 
 		public bool Active = true;
@@ -92,13 +93,13 @@ namespace BraiseEngineTemplate
 			}
 		}
 
-		public virtual void Draw()
+		public virtual void Draw(SpriteBatch _spriteBatch)
 		{
 			if (Active)
 			{
 				foreach (Component component in components)
 				{
-					component.Draw();
+					component.Draw(_spriteBatch);
 				}
 			}
 		}

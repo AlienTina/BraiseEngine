@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace BraiseEngineTemplate.Engine.GameObjects
 {
@@ -70,9 +71,9 @@ namespace BraiseEngineTemplate.Engine.GameObjects
 			}
 			
 		}
-		public override void Draw()
+		public override void Draw(SpriteBatch _spriteBatch)
 		{
-			base.Draw();
+			base.Draw(_spriteBatch);
 			Core.Instance._spriteBatch.DrawString(Core.Instance.DefaultFont, text, transform.position + (Vector2.UnitY * Core.Instance.DefaultFont.LineSpacing / 2), textColor, 0, Vector2.Zero, 1, Microsoft.Xna.Framework.Graphics.SpriteEffects.None, 1);
 		}
 

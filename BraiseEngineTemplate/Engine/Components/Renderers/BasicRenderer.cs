@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
+using System.Text.Json.Serialization;
 
 namespace BraiseEngineTemplate.Components
 {
@@ -12,23 +13,25 @@ namespace BraiseEngineTemplate.Components
 	 */
 	public class BasicRenderer : Renderer
 	{
-		public Texture2D sprite {  get; set; }
-		public BasicRenderer(GameObject parent, Texture2D sprite) : base(parent, sprite)
-		{
-			this.sprite = sprite;
-			this.parent = parent;
-		}
+
 		public BasicRenderer(GameObject parent, string spritePath) : base(parent, spritePath)
 		{
+			this.spritePath = spritePath;
 			this.sprite = Core.Instance.Content.Load<Texture2D>(spritePath);
 			this.parent = parent;
 		}
+		[JsonConstructor]
+		public BasicRenderer(string spritePath)
+		{
+			this.spritePath = spritePath;
+			this.sprite = Core.Instance.Content.Load<Texture2D>(spritePath);
+		}
 
-		public override void Draw()
+		public override void Draw(SpriteBatch _spriteBatch)
 		{
 			if (Active)
 			{
-				Core.Instance._spriteBatch.Draw(sprite, parent.transform.position, Color.White);
+				_spriteBatch.Draw(sprite, parent.transform.position, color);
 			}
 		}
 	}

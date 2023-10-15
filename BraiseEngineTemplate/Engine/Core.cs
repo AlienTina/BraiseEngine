@@ -1,5 +1,5 @@
 ﻿using BraiseEngineTemplate.Components;
-using BraiseEngineTemplate.Engine.Classes;
+using BraiseEngineTemplate.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -22,6 +22,8 @@ namespace BraiseEngineTemplate
 		public MouseState currentMouseState;
 		public MouseState lastMouseState;
 
+		public Dictionary<string, Type> entityList = new Dictionary<string, Type>();
+
 		public static Core Instance
 		{
 			set { instance = value; }
@@ -42,7 +44,6 @@ namespace BraiseEngineTemplate
 		public SpriteBatch _spriteBatch;
 
 		public Scene currentScene = new Scene();
-		public Scene UI = new Scene();
 
 		private Matrix camera = Matrix.Identity;
 
@@ -97,7 +98,6 @@ namespace BraiseEngineTemplate
 			}
 
 			currentScene.Update(gameTime);
-			UI.Update(gameTime);
 
 			Vector2 translation = -cameraWorldPosition + screenCentre;
 
@@ -111,10 +111,11 @@ namespace BraiseEngineTemplate
 			GraphicsDevice.Clear(backgroundColor);
 
 			_spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, camera);
-			currentScene.Draw();
+			currentScene.Draw(_spriteBatch);
 			_spriteBatch.End();
 			_spriteBatch.Begin(SpriteSortMode.FrontToBack, null, null, null, null, null, Matrix.Identity);
-			UI.Draw();
+			if (currentScene.UI != null)
+				currentScene.UI.Draw(_spriteBatch);
 			_spriteBatch.End();
 
 			base.Draw(gameTime);

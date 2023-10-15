@@ -12,26 +12,36 @@ namespace BraiseEngineTemplate.Components.Colliders
 			this.Center = center;
 			this.Radius = radius;
 		}
+		public Circle()
+		{
+
+		}
 	}
 	public class CircleCollider : Collider
 	{
+		[EditableInEditor]
 		public Circle boundingCircle;
+		[EditableInEditor]
 		private Vector2 offset;
 		public CircleCollider(GameObject parent, float radius, Vector2 offset) : base(parent)
 		{
 			this.parent = parent;
 			this.boundingCircle = new Circle(parent.transform.position + offset, radius);
 			this.offset = offset;
-			this.Size = new Vector2(radius * 2, radius * 2);
+			this.correctionRect = new Rectangle();
+			this.correctionRect.Size = new Vector2(radius * 2, radius * 2).ToPoint();
 		}
 
+		public CircleCollider()
+		{
+
+		}
 
 		public override void Update(GameTime gameTime)
 		{
 			//Update the collider's position, and set the position variable to it
 			boundingCircle.Center = parent.transform.position + offset;
-			Position.X = boundingCircle.Center.X - boundingCircle.Radius;
-			Position.Y = boundingCircle.Center.Y - boundingCircle.Radius;
+			correctionRect.Location = (parent.transform.position - (Vector2.One * boundingCircle.Radius / 2)).ToPoint();
 		}
 
 		public override bool CheckForCollision(Collider other)
