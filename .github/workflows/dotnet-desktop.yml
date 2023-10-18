@@ -72,6 +72,10 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+    - name: Install dependencies
+      run: dotnet add package Newtonsoft.Json
+           dotnet add package MonoGame.Framework.DesktopGL
+           dotnet add package MonoGame.Content.Builder.Task
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
