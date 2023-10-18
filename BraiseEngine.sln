@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BraiseEngineTemplate", "BraiseEngineTemplate\BraiseEngineTemplate.csproj", "{5373B0FC-8DFE-44D6-AE04-E52106E9449C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BraiseEngine", "BraiseEngine\BraiseEngine.csproj", "{887322BC-475C-45F6-BB45-B773475F8CCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5373B0FC-8DFE-44D6-AE04-E52106E9449C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5373B0FC-8DFE-44D6-AE04-E52106E9449C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5373B0FC-8DFE-44D6-AE04-E52106E9449C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5373B0FC-8DFE-44D6-AE04-E52106E9449C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{887322BC-475C-45F6-BB45-B773475F8CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887322BC-475C-45F6-BB45-B773475F8CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887322BC-475C-45F6-BB45-B773475F8CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{887322BC-475C-45F6-BB45-B773475F8CCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

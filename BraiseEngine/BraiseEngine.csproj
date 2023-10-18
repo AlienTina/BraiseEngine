@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	 <PublishSingleFile>true</PublishSingleFile>
+	 <SelfContained>false</SelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Content\Engine\DefaultFont.xnb" />
+    <None Remove="Content\Engine\Shapes\Box.xnb" />
+    <None Remove="Content\Engine\Shapes\Circle.xnb" />
+    <None Remove="Content\Engine\undefined.xnb" />
+    <None Remove="Content\Icon.xnb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Content\Engine\DefaultFont.xnb" />
+    <Resource Include="Content\Engine\Shapes\Box.xnb" />
+    <Resource Include="Content\Engine\Shapes\Circle.xnb" />
+    <Resource Include="Content\Engine\undefined.xnb" />
+    <Resource Include="Content\Icon.xnb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ResourceFile.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResourceFile.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="ResourceFile.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceFile.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
